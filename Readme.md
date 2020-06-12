@@ -10,15 +10,13 @@ I have used context API to share the states between the components
 
 Once submitted it calls the backend Python Flask API to add the item to the sqlite3 database.
 
-I the backend I have used SQLAchemy to connect to sqlite3 database.Also I have used token based authentication for the APIs.
-
-The added Item appers on the side of the form
+The added Item appers on the side of the form along with image as thumbnail
 
 It has option to delete the item.
 
 Also which when clicked on the item name it takes to the new page showing product with image and description
 
-The Flask application uses SQLAlchemy to retrieve the content of the sqlite3 databases, ReactJS call the REST API and display it !
+The Flask application uses SQLAlchemy to retrieve the content of the sqlite3 databases (I have used token based authentication for the APIs). ReactJS call the REST API and display it !
 
 ### Run the app
 
