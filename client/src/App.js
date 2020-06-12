@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { FormContainer } from "./components/FormContainer";
 import Items from "./components/Items";
 import Item from './components/Item';
+import Nav from './components/navbar';
+
 import { ItemProvider } from "./components/ItemContext";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
@@ -11,12 +13,13 @@ class App extends Component {
             <Router>
                 <ItemProvider>
                     <div className='App'>
+                        <Nav />
                         <Switch>
                             <Route exact path="/item/:id" component={Item} />
-                            <Route path="/" render={() => <div>
+                            <Route path="/" render={() => <React.Fragment>
                                 <FormContainer />
                                 <Items />
-                            </div>} />
+                            </React.Fragment>} />
                         </Switch>
                     </div>{" "}
                 </ItemProvider>

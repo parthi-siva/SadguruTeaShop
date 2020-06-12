@@ -39,7 +39,7 @@ const Item = ({ match }) => {
                     </div>
                     <div className="card-content">
                         <p><b>{item.description}</b></p>
-                        <p><b>Price: {item.price} Rs</b></p>
+                        <p><b>Price: ₹ {item.price}</b></p>
                     </div>
                 </div>
             </div>

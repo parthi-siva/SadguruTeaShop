@@ -20,7 +20,7 @@ const Items = props => {
     }, [item.length])
 
     const imgStyle = {
-        width: "20px", height: "20px"
+        width: "40px", height: "40px"
     }
     return (
         <div className='col-md-7 col-sm-12 text-left'>

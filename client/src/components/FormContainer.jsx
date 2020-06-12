@@ -67,7 +67,6 @@ export const FormContainer = () => {
 
     return (
         <form className='col-md-5 col-sm-12' onSubmit={handleFormSubmit}>
-            <div className='bigcart'></div>
             <InputArea
                 inputType={"text"}
                 title={"Item Name"}
