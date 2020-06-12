@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+
+  flask-api:
+    container_name: app-app
+    restart: always
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+    command: >
+      gunicorn -b 127.0.0.1:8000
+      --access-logfile -
+      --reload
+      api:app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/usr/src/app
+
+  client:
+    container_name: react-app
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - './client:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '8080:8080'
+    depends_on:
+      - "flask-api"
