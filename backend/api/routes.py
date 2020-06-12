@@ -5,9 +5,7 @@ import os
 from functools import wraps
 import random
 import string
-
-relpath = "/public/assets/images"
-abspath = "/home/parthi/Documents/react/minimal-react-webpack-babel-setup"
+from config import basedir
 
 
 def require_appkey(view_function):
@@ -24,7 +22,6 @@ def require_appkey(view_function):
 @app.route('/AddItem', methods=['POST'])
 @require_appkey
 def additems():
-    print((request.values))
     try:
         itemname = request.values['name']
         description = request.values['description']
@@ -38,7 +35,7 @@ def additems():
 
     letters = string.ascii_letters
     filename = ''.join(random.choice(letters) for i in range(5)) + filename
-    filelocation = os.path.join(relpath, filename)
+    filelocation = os.path.join(app.config["ASSET_PATH"], filename)
 
     try:
         new_item = InventoryItem(
@@ -46,14 +43,15 @@ def additems():
             price=price,
             description=description,
             quantity=quantity,
-            filename=filelocation,
+            filename=filelocation.lstrip("client"),
             filetype=ftype)
         db.session.add(new_item)
         db.session.commit()
     except Exception:
         return {'msg': 'Error during database operations', 'status': 500}
 
-    with open(abspath+filelocation, 'wb') as fptr:
+    path = os.path.join(basedir.rstrip('/backend'), filelocation)
+    with open(path,'wb') as fptr:
         fptr.write(fileObj.read())
 
     newItem = InventorySchema()
