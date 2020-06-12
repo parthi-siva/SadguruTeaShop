@@ -1,4 +1,4 @@
-# ReactJS + Flask (REST API) + Sqlite3 (with Docker)
+# ReactJS + Flask (REST API) + Sqlite3
 
  This webapp helps track the different items "Sadguru's Amrit-Tulya - Tea Shop" have for sale.
 
@@ -6,7 +6,11 @@
 
 This application has a form component which has name, price, quantity, description and option to upload photo to add new item to the inventory
 
+I have used #context API# to share the states between the components
+
 Once submitted it calls the backend Python Flask API to add the item to the sqlite3 database.
+
+I the backend I have used SQLAchemy to connect to sqlite3 database.Also I have used token based authentication for the APIs.
 
 The added Item appers on the side of the form
 
